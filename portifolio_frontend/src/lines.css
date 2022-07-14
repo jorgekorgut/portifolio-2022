@@ -1,0 +1,79 @@
+
+.experience_line_1{
+	background-color: var(--experience_color_back);
+	width:15px;
+	justify-self: end;
+}
+.experience_line_2{
+	background-color: var(--experience_color_back);
+	height:15px;
+	align-self: end;
+
+}
+.experience_line_3{
+	background-color: var(--experience_color_back);
+	width:15px;
+
+}
+.experience_line_4{
+	background-color: var(--experience_color_back);
+	height:15px;
+	align-self: end;
+}
+.experience_line_5{
+	background-color: var(--experience_color_back);
+	width:15px;
+	justify-self: end;
+}
+.experience_line_6{
+	background-color: var(--experience_color_back);
+	height:15px;
+}
+
+.contact_line_4{
+	height: 15px;
+	background-color: var(--contact_color_back);
+	align-self: end;
+}
+
+.contact_line_2{
+	height: 15px;
+	background-color: var(--contact_color_back);
+	align-self: end;
+}
+
+.contact_line_1{
+	width:15px;
+	height:100%;
+	background-color: var(--contact_color_back);
+	justify-self: end;
+}
+
+.contact_line_3{
+	width:15px;
+	background-color: var(--contact_color_back);
+	justify-self: end;
+}
+
+.projects_line_4, .projects_line_2{
+	background-color: var(--projects_color_back);
+	height:15px;
+	align-self: end;
+}
+
+.projects_line_3, .projects_line_1{
+	background-color: var(--projects_color_back);
+	width: 15px;
+}
+
+.about_line_1{
+	background-color: var(--about_color_back);
+	width: 15px;
+	justify-self: right;
+}
+
+.about_line_2{
+	background-color: var(--about_color_back);
+	height: 15px;
+	align-self: end;
+}
