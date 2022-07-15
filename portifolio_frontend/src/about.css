@@ -1,1 +1,31 @@
+.card{
+	background-color: var(--about_color_back);
+	margin: var(--margin);
+	padding: var(--padding);
+	border-radius: var(--border-radius);
+	font-size: var(--font-size);
+	color: var(--about_color);
+	box-shadow: var(--box-shadow);
+	font-family: var(--font-family);
+}
+
+.information{
+	display: flex;
+	justify-content: space-between;
+	margin: var(--margin) 0px var(--margin) 0px;
+}
+
+.university{
+	align-self: center;
+}
+
+.Years{
+	text-align: center;
+	margin: 0px var(--margin) 0px var(--margin);
+	background-color: var(--about_color);
+	color: white;
+	border-radius: calc(var(--border-radius)/2);
+	padding: var(--padding);
+	font-weight: bold;
+}
 

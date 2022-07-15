@@ -80,6 +80,10 @@ body {
 	--min_window_width:350px;
 
 	--font-size: 25px;
+	--font-family: Ubuntu;
+
+	--box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+
 	--button_nav_width:275px;
 	--button_nav_height:100px;
 
@@ -124,7 +128,7 @@ a{
 	transform: scale(var(--scaling_factor));
 	transform-origin: left bottom;
 
-	box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+	box-shadow: var(--box-shadow);
 }
 
 .button_nav img{
@@ -202,7 +206,7 @@ a{
 	z-index: 15;
 	overflow: hidden;
 	display:var(--hidden, flex);
-	box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+	box-shadow: var(--box-shadow);
 }
 
 .window img{
