@@ -21,12 +21,27 @@ export function About(props){
 
 	let [error, setError] = useState(null);
 	let generalError = error;
+
+	const [educationTitle, setEducationTitle] = useState([]);
+
 	const [educations, setEducations] = useState([]);
 
 	const [about, setAbout] = useState([]);
 
 	useEffect(() => {
-		fetch('http://localhost:1337/api/educations',{ method: 'GET', headers: {'Content-Type': 'application/json'}})
+		fetch('http://localhost:1337/api/education-info',{ method: 'GET', headers: {'Content-Type': 'application/json'}})
+		.then(checkStatus)
+		.then(parseJSON)
+		.then(({data}) => setEducationTitle(data))
+		.catch((error) => setError(error));
+	},[]);
+
+	if(error){
+		generalError = error;
+	}
+
+	useEffect(() => {
+		fetch('http://localhost:1337/api/educations?populate=*',{ method: 'GET', headers: {'Content-Type': 'application/json'}})
 		.then(checkStatus)
 		.then(parseJSON)
 		.then(({data}) => setEducations(data))
@@ -38,7 +53,7 @@ export function About(props){
 	}
 
 	useEffect(() => {
-		fetch('http://localhost:1337/api/abouts',{ method: 'GET', headers: {'Content-Type': 'application/json'}})
+		fetch('http://localhost:1337/api/abouts?populate=*',{ method: 'GET', headers: {'Content-Type': 'application/json'}})
 		.then(checkStatus)
 		.then(parseJSON)
 		.then(({data}) => setAbout(data))
@@ -53,7 +68,7 @@ export function About(props){
 				<>
 					<Navigation highlight='about'/>
 					<CardAbout data={about}/>
-					<CardEducation data={educations}/>
+					<CardEducation data={educations} title={educationTitle}/>
 				</>
 		);
 	return component; 
@@ -62,14 +77,23 @@ export function About(props){
 
 function CardAbout(props){
 	let data = props.data;
-	console.log(data);
+	//console.log(data);
 
 	let component = (
-		<div className = "card card_about">
+		<div className = "card_about">
 			{
-				data.map((d)=>(
+			data.map((d)=>(
 				<div key={d.id} className='information'>
-					<div className="Description">{d.attributes.Description}</div>
+					<div className="card Description">{d.attributes.Description}</div>
+					<div className="card Images">
+						{
+							d.attributes.Images.data.map((image)=>(
+								<div key={image.id}className="single_image about_image">
+									<img src={"http://localhost:1337"+image.attributes.url}></img>
+								</div>
+								)) 
+						}
+					</div>
 				</div>
 				))}
 		</div>
@@ -79,10 +103,15 @@ function CardAbout(props){
 
 function CardEducation(props){
 	let data = props.data;
-	console.log(data);
+	let title = props.title;
+	console.log(props);
 
 	let component = (
 		<div className = "card card_education">
+			{
+				title.attributes !== undefined &&
+				<div className="title title_education"> <strong>{title.attributes.Title}</strong> : &lt;{title.attributes.Domain}&gt; <strong>{title.attributes.StudyLevel}</strong></div>
+			}
 			{
 				data.map((d)=>(
 				<div key={d.id} className='information'>

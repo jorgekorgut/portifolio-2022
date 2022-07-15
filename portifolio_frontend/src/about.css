@@ -15,6 +15,25 @@
 	margin: var(--margin) 0px var(--margin) 0px;
 }
 
+.Description{
+	display:flex;
+	align-items: center;
+}
+
+.card_about{ 
+	display: flex;
+}
+
+.Images{
+	display: flex;
+	align-items: center;
+	height: fit-content;
+}
+
+.Images img{
+	height:150px;
+}
+
 .university{
 	align-self: center;
 }
@@ -27,5 +46,20 @@
 	border-radius: calc(var(--border-radius)/2);
 	padding: var(--padding);
 	font-weight: bold;
+}
+
+.title{
+	position:relative;
+	width:fit-content;
+}
+
+.title::before{
+	content: '';
+	position:absolute;
+	bottom: -15px;
+	width:100%;
+	height:10px;
+	background-color: var(--about_color);
+	border-radius: 5px;
 }
 

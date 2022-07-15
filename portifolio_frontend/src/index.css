@@ -288,7 +288,7 @@ a{
 	padding:var(--padding);
 	border-radius: var(--border-radius);
 	font-size: var(--font-size);
-	align-items: center;
+	align-items: left;
 	z-index: 10;
 	min-width: var(--min_window_width);
 	overflow: hidden;
@@ -298,6 +298,7 @@ a{
 #research_bar{
 	display:flex;
 	position: relative;
+	width:100%;
 }
 
 #research_bar input{
