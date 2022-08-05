@@ -1,0 +1,46 @@
+.research_container{
+	margin: var(--margin);
+	padding: var(--padding);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: var(--projects_color_back);
+	border-radius: var(--border-radius);
+}
+
+.research_container input{
+	background-color: white;
+	color: var(--projects_color_back);
+	font-weight: bold;
+	font-size: var(--font-size);
+	border: none;
+	box-shadow: 5px 5px 10px var(--projects_color);
+	width:70%;
+	outline-color: var(--projects_color);
+	border-radius: var(--border-radius);
+}
+
+.research_container input::selection{
+	color: black;
+}
+
+.research_container button{
+	background-color: white;
+	border: none;
+	font-size: var(--font-size);
+	font-weight: bold;
+	color: var(--projects_color);
+	padding: var(--padding);
+	width: 20%;
+	min-width:120px;
+	max-width:200px;
+	margin-left: var(--margin);
+	box-shadow: 5px 5px 10px var(--projects_color);
+	border-radius: var(--border-radius);
+}
+
+.research_container button:hover{
+	background-color: var(--projects_color);
+	color:white;
+	cursor:pointer;
+}

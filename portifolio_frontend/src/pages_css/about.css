@@ -1,0 +1,27 @@
+.card_element_about{ 
+	color: var(--about_color);
+	background-color: var(--about_color_back);
+}
+
+.university{
+	align-self: center;
+}
+
+.Years{
+	text-align: center;
+	vertical-align: center;
+	display: flex;
+	align-items: center;
+
+	margin: 0px var(--margin) 0px var(--margin);
+	min-width:90px;
+	background-color: var(--about_color);
+	color: white;
+	border-radius: calc(var(--border-radius)/2);
+	padding: var(--padding);
+	font-weight: bold;
+}
+
+.title_about::before{
+	background-color: var(--about_color);
+}

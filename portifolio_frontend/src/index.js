@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import './lines.css';
-import './grid.css';
-import './rules.css';
+import './pages_css/lines.css';
+import './assets/css/grid.css';
+import './assets/css/rules.css';
 
 import {
   BrowserRouter as Router,
@@ -17,7 +17,19 @@ import {
 
 import {
 	About
-} from "./About.js";
+} from "./pages_js/about.js";
+
+import {
+	Experience
+} from "./pages_js/experience.js";
+
+import {
+	Projects
+} from "./pages_js/projects.js";
+
+import {
+	Contact
+} from "./pages_js/contact.js";
 
 function Button(props){
 	let classes = "button_nav "+props.name;
@@ -31,7 +43,7 @@ function Button(props){
 
 	return ( 
 		<Link to={"/"+props.name} id={"button_"+props.name} className={classes}>
-			<img src={require('./res/'+props.name+'_icon.png')}/>
+			<img src={require('./assets/images/'+props.name+'_icon.png')}/>
 			<div>{props.text}</div>	
 		</Link>	
 	);
@@ -53,7 +65,7 @@ export function Navigation(props){
 function CV(props){
 	return (
 		<div id="window_cv" className="window window_about">
-			<img src={require("./res/pdf_icon.png")}/>
+			<img src={require("./assets/images/pdf_icon.png")}/>
 			<div id="information_cv">
 				Curriculum Vitae <br/>
 				<div id="date_upload_cv">
@@ -68,7 +80,7 @@ function ResearchBar(props){
 	return(
 			<div id="research_bar" className="row">
 				<input type="text" placeholder="Research"></input>
-				<img src={require("./res/search_icon.png")}/>
+				<img src={require("./assets/images/search_icon.png")}/>
 			</div>
 	);
 }
@@ -87,7 +99,7 @@ function ItemList(props){
 	);
 }
 
-function Experience(props){
+function Experience_Window(props){
 	return (
 		<div id="window_experience" className="window window_experience">
 			<div id="interaction_experience">
@@ -104,7 +116,7 @@ function Experience(props){
 	);
 }
 
-function Projects(props){
+function Projects_Window(props){
 	return(
 		<div id="window_projects" className="window window_projects">
 			<ResearchBar/>
@@ -114,12 +126,12 @@ function Projects(props){
 }
 
 
-function Contact(props){
+function Contact_Window(props){
 	return(
 		<div id="window_contact" className="window window_contact_me">
 			<div className="row">
 				<input type="text" placeholder="Send me Hi!" maxLength="3"></input>
-				<img src={require("./res/email_icon.png")}/>
+				<img src={require("./assets/images/email_icon.png")}/>
 			</div>
 			<div className="information_contact">
 				<div id = "cellphone"> 
@@ -136,7 +148,7 @@ function IndexWindows(props){
 		<div className="container">
 			<div className="line experience_line_1"></div>
 			<div className="line experience_line_2"></div>
-			<Contact/>
+			<Contact_Window/>
 			<div className="line contact_line_1 contact_back_color"></div>
 			<div className="line contact_line_2 contact_back_color"></div>
 			<div className="line contact_line_3 contact_back_color"></div>
@@ -149,8 +161,8 @@ function IndexWindows(props){
 			<div className="line experience_line_3"></div>
 			<div className="line experience_line_4"></div>
 			<div className="line about_line_1"></div>
-			<Projects/>
-			<Experience/>
+			<Projects_Window/>
+			<Experience_Window/>
 			<CV/>
 		</div>
 	);
@@ -172,6 +184,9 @@ root.render(
 		<Routes>
 			<Route path="/" element={<Portifolio/>}/>
 			<Route path="about" element={<About/>}/>	
+			<Route path="experience" element={<Experience/>}/>
+			<Route path="projects" element={<Projects/>}/>
+			<Route path="contact" element={<Contact/>}/>
 		</Routes>
 	</BrowserRouter>
 );
