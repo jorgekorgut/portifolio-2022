@@ -39,7 +39,7 @@
 	display: var(--display,flex);
 	align-items: center;
 	justify-content: center;
-	font-size: calc(var(--year_width)/5.5);
+	font-size: var(--font-size_l);
 	font-weight: bold;
 	width:var(--year_width);
 	height:var(--year_width);

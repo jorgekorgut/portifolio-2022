@@ -12,9 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Description": {
-      "type": "text"
-    },
     "Title": {
       "type": "string"
     },
@@ -28,6 +25,13 @@
         "videos",
         "audios"
       ]
+    },
+    "Description": {
+      "type": "richtext"
+    },
+    "date": {
+      "type": "date",
+      "required": true
     }
   }
 }

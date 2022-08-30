@@ -1,86 +1,104 @@
-import {Navigation} from '../index.js';
-import {GetData} from '../assets/js/communication.js'
+import { Navigation } from '../index.js';
+import { baseURL, useFetch } from '../assets/js/communication.js'
 
 import '../pages_css/about.css'
 import '../assets/css/components.css'
 import '../assets/js/communication.js'
 
-export function About(props){
+export function About(props) {
 
-	let generalError = false;
-	let error;
+	[window.educationInfoLoading, window.educationInfoError, window.educationInfoData] = useFetch("api/education-info");
+	[window.educationLoading, window.educationError, window.educationData] = useFetch("api/educations?populate=*&sort=Date%3Adesc");
+	[window.aboutLoading, window.aboutError, window.aboutData] = useFetch("api/abouts?populate=*");
 
-	let educationTitle;
-	[educationTitle, error] = GetData("api/education-info");
+	if (window.educationError || window.aboutError || window.educationInfoError) {
+		return <p>Error.</p>;
+	}
 
-	let educations;
-	[educations, error] = GetData("api/educations?populate=*");
+	if (window.educationLoading || window.aboutLoading || window.educationInfoLoading) {
+		return <p>Loading...</p>;
+	}
 
-	let about;
-	[about, error] = GetData('api/abouts?populate=*');
+	let about = window.aboutData.data;
+	let educationInfo = window.educationInfoData.data;
+	let education = window.educationData.data;
 
 	let component = (
-				<>
-					<Navigation highlight='about'/>
-					<CardAbout data={about}/>
-					<CardEducation data={educations} title={educationTitle}/>
-				</>
-		);
-	return component; 
- 	
+		<>
+			<Navigation highlight='about' />
+			<CardAbout data={about} />
+			<CardEducation data={education} info={educationInfo} />
+
+		</>
+	);
+	return component;
+
 }
 
-function CardAbout(props){
+function CardAbout(props) {
 	let data = props.data;
 
 	let component = (
-		<div className = "card_container_about card_container">
+		<div className="card_container_about card_container">
 			{
-			data.map((d)=>(
-				<div key={d.id} className='card card_about'>
-					<div className="card_element card_element_about description">
-						<div className="title title_about"><strong> {d.attributes.Title} </strong> </div>
-						{d.attributes.Description}
-					</div>
-					{
-						
-						d.attributes.Images.data != null &&
-						<div className="card_element card_element_about images">
-							{
-								d.attributes.Images.data.map((image)=>(
-									<img key={d.id} src={"http://localhost:1337"+image.attributes.url}></img>
-									)) 
-							}
+				data.map((d) => (
+					<div key={d.id} className='card card_about'>
+						<div className="card_element card_element_about description">
+							<div className="title title_about" dangerouslySetInnerHTML={{ __html: d.attributes.Title }} />
+							<div dangerouslySetInnerHTML={{ __html: d.attributes.Description }} />
 						</div>
-					}
-				</div>
+						{
+
+							d.attributes.Images.data != null &&
+							<div className="card_element card_element_about images">
+								{
+									d.attributes.Images.data.map((image) => (
+										<img key={d.id} src={baseURL + image.attributes.url}></img>
+									))
+								}
+							</div>
+						}
+					</div>
 				))}
 		</div>
 	);
 	return component;
 }
 
-function CardEducation(props){
+function CardEducation(props) {
 	let data = props.data;
-	let title = props.title;
+	let info = props.info;
 
 	let component = (
-		<div className = "card card_about">
+		<div className="card card_about">
 			<div className='card_element card_element_about full_width'>
-			{
-				title.attributes != undefined &&
-				<div className="title title_about"> <strong>{title.attributes.Title}</strong> : &lt;{title.attributes.Domain}&gt; <strong>{title.attributes.StudyLevel}</strong></div>
-			}
-			{
-				data != undefined && 
-				data.map((d)=>(
-				<div key={d.id} className='card_row'>
-					<div className="university">{d.attributes.University}</div>
-					<div className="Years">{d.attributes.Years}</div>
-				</div>
-				))
-			}
+				{
+					<div className="title title_about"> {info.attributes.Title} : &lt;<strong className='colored'>{info.attributes.Domain}</strong>&gt; {info.attributes.StudyLevel}</div>
+				}
+				{
+					data.map((d) => (
+						<div key={d.id} className='card_row'>
+							<div className="university" dangerouslySetInnerHTML={{ __html: d.attributes.University }} />
+							<div className="Years">{d.attributes.Years}</div>
+						</div>
+					))
+				}
 			</div>
+			<div className='images_holder'>
+				{
+					data.map((d) => {
+						if(d.attributes.Images.data !== null){
+							return <div key={d.id} className='card_element card_element_about images'>
+							{
+								<img src={baseURL + d.attributes.Images.data[0].attributes.url}></img>
+							}
+						</div>
+						}
+					}
+					)
+				}
+			</div>
+
 		</div>
 	);
 	return component;

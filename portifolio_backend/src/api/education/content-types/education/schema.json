@@ -19,14 +19,20 @@
       "type": "string"
     },
     "Images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "Date": {
+      "type": "date",
+      "default": "2022-08-30",
+      "required": true
     }
   }
 }

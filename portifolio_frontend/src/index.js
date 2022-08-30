@@ -4,6 +4,8 @@ import './index.css';
 import './pages_css/lines.css';
 import './assets/css/grid.css';
 import './assets/css/rules.css';
+import './pages_css/background.css';
+import './assets/css/components_size.css';
 
 import {
   BrowserRouter as Router,
@@ -37,7 +39,13 @@ function Button(props){
 	if(props.highlight != undefined){
 		if(props.highlight === props.name)
 		{
-			classes += " highlight";
+			classes += " highlight_"+props.name;
+			return ( 
+				<Link to={"/"} id={"button_"+props.name} className={classes}>
+					<img src={require('./assets/images/'+props.name+'_icon.png')}/>
+					<div>{props.text}</div>	
+				</Link>	
+			);
 		}
 	}
 

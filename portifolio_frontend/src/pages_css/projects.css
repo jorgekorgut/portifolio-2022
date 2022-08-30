@@ -12,7 +12,7 @@
 	background-color: white;
 	color: var(--projects_color_back);
 	font-weight: bold;
-	font-size: var(--font-size);
+	font-size: var(--font-size_l);
 	border: none;
 	box-shadow: 5px 5px 10px var(--projects_color);
 	width:70%;
@@ -27,7 +27,7 @@
 .research_container button{
 	background-color: white;
 	border: none;
-	font-size: var(--font-size);
+	font-size: var(--font-size_l);
 	font-weight: bold;
 	color: var(--projects_color);
 	padding: var(--padding);

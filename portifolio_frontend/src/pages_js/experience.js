@@ -2,7 +2,7 @@ import { useState , useEffect } from 'react';
 
 import {Navigation} from '../index.js';
 
-import {GetData} from '../assets/js/communication.js'
+import {GetData, useFetch} from '../assets/js/communication.js'
 
 import '../pages_css/experience.css'
 import '../assets/css/components.css'
@@ -23,11 +23,18 @@ function findEveryYear(map){
 
 export function Experience(props){
 
-	let error;
-	let experiences;
-	[experiences, error] = GetData("api/experiences?populate=*")
+	[window.experienceLoading, window.experienceError, window.experienceData] = useFetch("api/experiences?populate=*");
+	
+	if (window.experienceError) {
+		return <p>Error.</p>;
+	  }
+	
+	if (window.experienceLoading) {
+		return <p>Loading...</p>;
+	}
 
-	let everyYear = findEveryYear(experiences);
+	let experience = window.experienceData.data;
+	let everyYear = findEveryYear(experience);
 
 	return (<>
 			<Navigation highlight='experience'/>
@@ -36,7 +43,7 @@ export function Experience(props){
 					return (
 						<div key={currentYear} className='year_container card_container'>
 						{
-							filterMapByYear(experiences, currentYear).map((exp,expIndex)=>(
+							filterMapByYear(experience, currentYear).map((exp,expIndex)=>(
 							<div key={exp.id} className="card card_experience">
 								{
 									expIndex===0 &&

@@ -1,0 +1,51 @@
+@media only screen and (min-width:1300px) {
+    #root {
+        --font-size_xl: 30px;
+        --font-size_l: 23px;
+        --font-size_m: 20px;
+        --font-size_s: 15px;
+        --image-size: 100px;
+        --min-width-nav: 275px;
+        --min-width-window: 350px;
+        --height-about: 100px;
+    }
+}
+
+@media only screen and (min-width:1100px) and (max-width:1300px) {
+    #root {
+        --font-size_xl: 25px;
+        --font-size_l: 20px;
+        --font-size_m: 15px;
+        --font-size_s: 15px;
+        --image-size: 80px;
+        --min-width-nav: 220px;
+        --min-width-window: 280px;
+        --height-about: 100px;
+    }
+}
+
+@media only screen and (min-width:850px) and (max-width:1100px) {
+    #root {
+        --font-size_xl: 20px;
+        --font-size_l: 17px;
+        --font-size_m: 15px;
+        --font-size_s: 15px;
+        --image-size: 60px;
+        --min-width-nav: 165px;
+        --min-width-window: 280px;
+        --height-about: 100px;
+    }
+}
+
+@media only screen and (max-width:850px) {
+    #root {
+        --font-size_xl: 25px;
+        --font-size_l: 20px;
+        --font-size_m: 15px;
+        --font-size_s: 15px;
+        --image-size: 80px;
+        --min-width-nav: 220px;
+        --min-width-window: 210px;
+        --height-about: 100px;
+    }
+}

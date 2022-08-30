@@ -2,6 +2,8 @@ import { useState , useEffect } from 'react';
 
 const parseJSON = (resp) => (resp.json ? resp.json() : resp);
 
+export const baseURL = "http://localhost:1337";
+
 const checkStatus = (resp) => {
   if (resp.status >= 200 && resp.status < 300) {
     return resp;
@@ -12,21 +14,31 @@ const checkStatus = (resp) => {
   });
 };
 
-export const GetData = (path) => {
-
-	const baseURL = "http://localhost:1337/";
-
+export const useFetch = (url,globalData) => {
+	const [data, setData] = useState(null);
 	const [error, setError] = useState(null);
-	const [data, setData] = useState([]);
+	const [loading, setLoading] = useState(true);
 
-	useEffect(() => {
-		fetch(baseURL + path,{ method: 'GET', headers: {'Content-Type': 'application/json'}})
-		.then(checkStatus)
-		.then(parseJSON)
-		.then(({data}) => setData(data))
-		.catch((error) => setError(error));
-	},[]);
+	useEffect(()=>{
+		const fetchData = async () => {
+			setLoading(true);
+			try{
+				if(globalData === undefined || globalData === null){
+					const res = await fetch(baseURL +"/"+ url);
+					const json = await res.json();
+					setData(json);
+				}else{
+					setData(globalData);
+				}
+				setLoading(false);
+			} catch (error){
+				setError(error);
+				setLoading(false);
+			}
+		}
+		fetchData();
+	},[url])
 
-	return [data, error];
-};
+	return [loading, error, data];
+}
 

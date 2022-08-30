@@ -1,1 +1,41 @@
+.highlight_about{
+    color: white !important;
+    background-color: var(--about_color) !important;
+}
 
+.highlight_about img{
+    filter: grayscale(1) brightness(400%) !important;
+}
+
+.highlight_experience{
+    color: white !important;
+    background-color: var(--experience_color) !important;
+}
+
+.highlight_experience img{
+    filter: grayscale(1) brightness(400%) !important;
+}
+
+.highlight_contact{
+    color: white !important;
+    background-color: var(--contact_color) !important;
+}
+
+.highlight_contact img{
+    filter: grayscale(1) brightness(400%) !important;
+}
+
+.highlight_projects{
+    color: white !important;
+    background-color: var(--projects_color) !important;
+}
+
+.highlight_projects img{
+    filter: grayscale(1) brightness(400%) !important;
+}
+
+@media only screen and (max-width:850px) {
+    .card{
+        flex-wrap: wrap;
+	}
+}

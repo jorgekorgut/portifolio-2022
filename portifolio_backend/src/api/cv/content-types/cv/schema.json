@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cvs",
+  "info": {
+    "singularName": "cv",
+    "pluralName": "cvs",
+    "displayName": "CV"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Language": {
+      "type": "enumeration",
+      "enum": [
+        "French",
+        "English",
+        "Portuguese",
+        "German"
+      ]
+    },
+    "File": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "Date": {
+      "type": "date",
+      "required": true,
+      "default": "2022-08-30"
+    }
+  }
+}

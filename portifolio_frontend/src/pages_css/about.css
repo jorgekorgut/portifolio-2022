@@ -3,17 +3,49 @@
 	background-color: var(--about_color_back);
 }
 
+.card_element_about .underlined{
+	color: var(--about_color);
+}
+
+.card_element_about strong{
+	font-weight: bold;
+}
+
+.card_element_about .colored{
+	color: var(--about_color);
+}
+
 .university{
 	align-self: center;
 }
 
+@media only screen and (max-width:850px) {
+    .card_row{
+        flex-direction: column !important;
+	}
+
+	.card_element{
+		justify-content: center;
+	}
+
+	.title{
+		text-align: center;
+		align-self: center !important;
+	}
+}
+
+@media only screen and (max-width:850px) {
+	.university{
+		text-align: center;
+	}
+}
+
 .Years{
 	text-align: center;
-	vertical-align: center;
 	display: flex;
-	align-items: center;
-
-	margin: 0px var(--margin) 0px var(--margin);
+	justify-content: center;
+	margin: calc(var(--margin)/2);
+	align-self: center;
 	min-width:90px;
 	background-color: var(--about_color);
 	color: white;
