@@ -57,3 +57,28 @@
 .title_about::before{
 	background-color: var(--about_color);
 }
+
+.card_element_row{
+	display:flex;
+	flex-wrap: wrap;
+	align-items: space-between;
+	justify-content: center;
+}
+
+.card_element_component{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width:200px;
+	margin: var(--margin);
+}
+
+.info_holder{
+	white-space: nowrap;
+	margin: var(--margin) var(--margin) 0 var(--margin);
+	font-size: var(--font-size_l);
+}
+
+.card_element_fullwidth{
+	width:100%;
+}

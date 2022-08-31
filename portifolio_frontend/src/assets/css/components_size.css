@@ -8,6 +8,7 @@
         --min-width-nav: 275px;
         --min-width-window: 350px;
         --height-about: 100px;
+        --height-contact: 80px;
     }
 }
 
@@ -21,6 +22,7 @@
         --min-width-nav: 220px;
         --min-width-window: 280px;
         --height-about: 100px;
+        --height-contact: 80px;
     }
 }
 
@@ -34,6 +36,7 @@
         --min-width-nav: 165px;
         --min-width-window: 280px;
         --height-about: 100px;
+        --height-contact: 80px;
     }
 }
 
@@ -47,5 +50,6 @@
         --min-width-nav: 220px;
         --min-width-window: 210px;
         --height-about: 100px;
+        --height-contact: 80px;
     }
 }

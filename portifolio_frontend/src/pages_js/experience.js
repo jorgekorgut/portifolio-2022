@@ -15,7 +15,7 @@ function findEveryYear(map){
 	let everyYear = [];
 	for(let element of map){
 		if(!everyYear.includes(element.attributes.Year)){
-			everyYear.push(element.attributes.Year);
+			everyYear.push(element.attributes.Year);	
 		}
 	}
 	return everyYear;
@@ -23,7 +23,7 @@ function findEveryYear(map){
 
 export function Experience(props){
 
-	[window.experienceLoading, window.experienceError, window.experienceData] = useFetch("api/experiences?populate=*");
+	[window.experienceLoading, window.experienceError, window.experienceData] = useFetch("api/experiences?populate=*&sort=Year%3Adesc");
 	
 	if (window.experienceError) {
 		return <p>Error.</p>;
@@ -58,6 +58,7 @@ export function Experience(props){
 									<div className='card_element card_element_experience full_width'>
 										<div className='title title_experience'><strong>{exp.attributes.Title}</strong></div>
 										<div className='description'>{exp.attributes.Description}</div>
+										<div className='footer_duration'>{exp.attributes.Duration}</div>
 									</div>
 								}
 								{

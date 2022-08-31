@@ -39,7 +39,7 @@
 	display: var(--display,flex);
 	align-items: center;
 	justify-content: center;
-	font-size: var(--font-size_l);
+	font-size: var(--font-size_xl);
 	font-weight: bold;
 	width:var(--year_width);
 	height:var(--year_width);
@@ -66,4 +66,19 @@
 	top: 5px;
 	height:120%;
 	background-color: var(--experience_color_back);
+}
+
+.footer_duration{
+	position:absolute !important;
+	right:0;
+	bottom:0;
+	width:fit-content;
+	font-weight: bold;
+	background-color: var(--experience_color);
+	color: white;
+	padding: 5px 20px 5px 20px;
+	border-radius: var(--border-radius);
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
 }

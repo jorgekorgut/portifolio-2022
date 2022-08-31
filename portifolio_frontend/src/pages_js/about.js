@@ -9,30 +9,62 @@ export function About(props) {
 
 	[window.educationInfoLoading, window.educationInfoError, window.educationInfoData] = useFetch("api/education-info");
 	[window.educationLoading, window.educationError, window.educationData] = useFetch("api/educations?populate=*&sort=Date%3Adesc");
-	[window.aboutLoading, window.aboutError, window.aboutData] = useFetch("api/abouts?populate=*");
+	[window.aboutLoading, window.aboutError, window.aboutData] = useFetch("api/abouts?populate=*&sort=Order%3Aasc");
+	[window.languageLoading, window.languageError, window.languageData] = useFetch("api/languages?populate=*&sort=Level%3Adesc");
 
-	if (window.educationError || window.aboutError || window.educationInfoError) {
+	if (window.educationError || window.aboutError || window.educationInfoError || window.languageError) {
 		return <p>Error.</p>;
 	}
 
-	if (window.educationLoading || window.aboutLoading || window.educationInfoLoading) {
+	if (window.educationLoading || window.aboutLoading || window.educationInfoLoading || window.languageLoading) {
 		return <p>Loading...</p>;
 	}
 
 	let about = window.aboutData.data;
 	let educationInfo = window.educationInfoData.data;
 	let education = window.educationData.data;
+	let language = window.languageData.data;
 
 	let component = (
 		<>
 			<Navigation highlight='about' />
 			<CardAbout data={about} />
 			<CardEducation data={education} info={educationInfo} />
-
+			<CardLanguage data={language} />
 		</>
 	);
 	return component;
 
+}
+
+function CardLanguage(props) {
+	let data = props.data;
+
+	let component = (
+		<div className='card'>
+			<div className='card_element card_element_about'>
+				<div className="title title_about">
+					<strong>Languages Spoken</strong>
+				</div>
+				<div className='card_element_row'>
+					{
+						data.map((d) => {
+							return (<div key={d.id} className='card_element_component'>
+								<div className='image_holder_square'>
+									<img src={baseURL + d.attributes.Image.data.attributes.url} />
+								</div>
+								<div className='info_holder'>
+									<strong>{d.attributes.Name + " - " + d.attributes.Level}</strong>
+								</div>
+							</div>);
+						})
+					}
+				</div>
+			</div>
+
+		</div>);
+
+	return component;
 }
 
 function CardAbout(props) {
@@ -87,12 +119,12 @@ function CardEducation(props) {
 			<div className='images_holder'>
 				{
 					data.map((d) => {
-						if(d.attributes.Images.data !== null){
+						if (d.attributes.Images.data !== null) {
 							return <div key={d.id} className='card_element card_element_about images'>
-							{
-								<img src={baseURL + d.attributes.Images.data[0].attributes.url}></img>
-							}
-						</div>
+								{
+									<img src={baseURL + d.attributes.Images.data[0].attributes.url}></img>
+								}
+							</div>
 						}
 					}
 					)

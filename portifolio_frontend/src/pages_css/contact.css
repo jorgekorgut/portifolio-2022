@@ -1,3 +1,124 @@
-.card{
-	
+@media only screen and (max-width:500px) {
+    .contact_box{
+        flex-direction: column;
+    }
+}
+
+.contact_box{
+    background-color: var(--contact_color_back);
+    display: flex;
+    justify-content: space-between;
+    margin: var(--margin);
+    align-items: center;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    position:relative;
+    flex-wrap: wrap;
+    
+}
+
+.contact_box::after{
+    position:absolute;
+    content: "";
+    background-color: var(--contact_color);
+    bottom: -10px;
+    left: 0;
+    width:100%;
+    height:10px;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+
+}
+
+.contact_box button{
+    background-color: white;
+    color: var(--contact_color);
+    font-weight: bold;
+    font-size: var(--font-size_l);
+    border-radius: var(--border-radius);
+    border: none;
+    margin: var(--margin);
+    padding: var(--padding);
+    box-shadow: 5px 5px 10px var(--contact_color);
+}
+
+.contact_box button:hover{
+    background-color: var(--contact_color);
+    color: white;
+    cursor: pointer;
+}
+
+.contact_box h1 {
+    margin: var(--margin);
+    color: var(--contact_color);
+}
+
+@media only screen and (max-width:850px) {
+	.card_contact{
+        flex-direction: column;
+        align-items: center;
+	}
+}
+
+.card_contact{
+    justify-content: space-between !important;
+}
+
+.card_element_contact{
+    background-color: var(--contact_color_back);
+    color: var(--contact_color);
+    font-size: var(--font-size_xl);
+    justify-content: center;
+    position:relative;
+}
+
+.card_element_contact::after{
+	position:absolute;
+	content:"";
+	left: calc(50% - 15px);
+	width:30px;
+	z-index:-5;
+	top: 50%;
+	height:120%;
+	background-color: var(--contact_color_back);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.card_element_contact_name{
+    align-items: center;
+    width:150px;
+}
+
+.card_element_contact_logo{
+    align-items: center;
+    width:130px;
+}
+
+.card_element_url{
+    font-size: var(--font-size_l);
+}
+
+.card_element_url a{
+    text-decoration: none;
+}
+
+.card_element_url a:link{
+    color: var(--contact_color);
+}
+
+.card_element_url a:visited{
+    color: var(--contact_color);
+}
+
+.card_element_url a:hover{
+    color: var(--contact_color);
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
+.image_holder_contact{
+    height: var(--height-contact) !important;
+}
+
+.image_holder_contact img{
+    fill: var(--contact_color);
 }

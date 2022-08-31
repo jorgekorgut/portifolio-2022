@@ -4,10 +4,11 @@
   "info": {
     "singularName": "cv",
     "pluralName": "cvs",
-    "displayName": "CV"
+    "displayName": "CV",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -21,12 +22,12 @@
       ]
     },
     "File": {
-      "allowedTypes": [
-        "files"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "files"
+      ]
     },
     "Date": {
       "type": "date",

@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -29,8 +29,8 @@
     "Description": {
       "type": "richtext"
     },
-    "date": {
-      "type": "date",
+    "Order": {
+      "type": "integer",
       "required": true
     }
   }

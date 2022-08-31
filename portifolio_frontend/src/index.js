@@ -6,6 +6,7 @@ import './assets/css/grid.css';
 import './assets/css/rules.css';
 import './pages_css/background.css';
 import './assets/css/components_size.css';
+import './assets/css/image_holder.css';
 
 import {
   BrowserRouter as Router,
