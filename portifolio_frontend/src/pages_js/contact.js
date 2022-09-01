@@ -5,6 +5,8 @@ import { Navigation } from '../index.js';
 import '../pages_css/contact.css'
 import '../assets/css/components.css'
 import { baseURL, useFetch } from '../assets/js/communication.js';
+import { Loading } from './loading.js';
+import Transitions from '../assets/js/transition.js';
 
 export function Contact(props) {
 
@@ -17,12 +19,12 @@ export function Contact(props) {
 	}
 
 	if (window.contactLoading || window.contactInfoLoading) {
-		return <p>Loading...</p>;
+		return <Loading></Loading>;
 	}
 
 	let contact = window.contactData.data;
 
-	return (<>
+	return (<Transitions className="transition">
 		<Navigation highlight='contact' />
 		<div className='contact_box'>
 			<h1>Contact</h1>
@@ -56,5 +58,5 @@ export function Contact(props) {
 				})
 			}
 		</div>
-	</>)
+	</Transitions>)
 }

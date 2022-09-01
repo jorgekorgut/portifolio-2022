@@ -7,6 +7,7 @@ import './assets/css/rules.css';
 import './pages_css/background.css';
 import './assets/css/components_size.css';
 import './assets/css/image_holder.css';
+import './assets/css/animation.css';
 
 import {
   BrowserRouter as Router,
@@ -33,6 +34,31 @@ import {
 import {
 	Contact
 } from "./pages_js/contact.js";
+import { Loading } from './pages_js/loading';
+import Transitions from './assets/js/transition';
+import { baseURL, useFetch } from './assets/js/communication';
+
+function Portifolio(props){
+
+	[window.cvLoading, window.cvError, window.cvData] = useFetch("api/cvs?populate=*&sort=Date%3Adesc");
+	
+	if (window.cvError) {
+		return <p>Error.</p>;
+	}
+
+	if (window.cvLoading) {
+		return <Loading></Loading>;
+	}
+
+	let cv = window.cvData.data[0];
+
+	return (
+		<Transitions className="transition">
+			<Navigation/>
+			<IndexWindows data={cv}/>
+		</Transitions>
+	);
+}
 
 function Button(props){
 	let classes = "button_nav "+props.name;
@@ -72,16 +98,19 @@ export function Navigation(props){
 }
 
 function CV(props){
+
+	let url = props.url;
+	let date = props.date;
 	return (
-		<div id="window_cv" className="window window_about">
+		<a id="window_cv" className="window window_about" href={baseURL + url} target="_blank">
 			<img src={require("./assets/images/pdf_icon.png")}/>
 			<div id="information_cv">
 				Curriculum Vitae <br/>
 				<div id="date_upload_cv">
-					06/07/2022
+					{date}
 				</div>
 			</div>
-		</div>
+		</a>
 	);
 }
 
@@ -153,6 +182,9 @@ function Contact_Window(props){
 }
 
 function IndexWindows(props){
+
+	let data = props.data;
+
 	return (
 		<div className="container">
 			<div className="line experience_line_1"></div>
@@ -172,20 +204,10 @@ function IndexWindows(props){
 			<div className="line about_line_1"></div>
 			<Projects_Window/>
 			<Experience_Window/>
-			<CV/>
+			<CV url={data.attributes.File.data.attributes.url} date={data.attributes.Date} />
 		</div>
 	);
 }
-
-function Portifolio(props){
-	return (
-		<div>
-			<Navigation/>
-			<IndexWindows/>
-		</div>
-	);
-}
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

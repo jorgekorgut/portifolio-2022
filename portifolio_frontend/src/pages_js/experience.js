@@ -6,6 +6,8 @@ import {GetData, useFetch} from '../assets/js/communication.js'
 
 import '../pages_css/experience.css'
 import '../assets/css/components.css'
+import { Loading } from './loading.js';
+import Transitions from '../assets/js/transition.js';
 
 function filterMapByYear(map, y){
 	return map.filter(({attributes})=> attributes.Year === y);
@@ -30,13 +32,13 @@ export function Experience(props){
 	  }
 	
 	if (window.experienceLoading) {
-		return <p>Loading...</p>;
+		return <Loading></Loading>;
 	}
 
 	let experience = window.experienceData.data;
 	let everyYear = findEveryYear(experience);
 
-	return (<>
+	return (<Transitions className="transition">
 			<Navigation highlight='experience'/>
 			{
 				everyYear.map((currentYear) => {
@@ -76,5 +78,5 @@ export function Experience(props){
 					)
 				})
 			}
-	       </>);
+	       </Transitions>);
 }

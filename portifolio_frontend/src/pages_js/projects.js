@@ -5,6 +5,8 @@ import { Navigation } from '../index.js';
 import '../pages_css/projects.css'
 import '../assets/css/components.css'
 import { baseURL, useFetch } from '../assets/js/communication.js';
+import { Loading } from './loading.js';
+import Transitions from '../assets/js/transition.js';
 
 function ResearchBar() {
 	return (
@@ -27,12 +29,12 @@ export function Projects(props) {
 	}
 
 	if (window.projectLoading) {
-		return <p>Loading...</p>;
+		return <Loading></Loading>;
 	}
 
 	let project = window.projectData.data;
 
-	return (<>
+	return (<Transitions className="transition">
 		<Navigation highlight='projects' />
 		<ResearchBar />
 		<div className='card_holder'>
@@ -71,7 +73,7 @@ export function Projects(props) {
 
 
 		</div>
-	</>)
+	</Transitions>)
 }
 
 function onResearch() {

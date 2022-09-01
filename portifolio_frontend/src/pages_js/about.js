@@ -4,6 +4,8 @@ import { baseURL, useFetch } from '../assets/js/communication.js'
 import '../pages_css/about.css'
 import '../assets/css/components.css'
 import '../assets/js/communication.js'
+import { Loading } from './loading.js';
+import Transitions from '../assets/js/transition.js';
 
 export function About(props) {
 
@@ -17,7 +19,7 @@ export function About(props) {
 	}
 
 	if (window.educationLoading || window.aboutLoading || window.educationInfoLoading || window.languageLoading) {
-		return <p>Loading...</p>;
+		return <Loading></Loading>;
 	}
 
 	let about = window.aboutData.data;
@@ -26,12 +28,12 @@ export function About(props) {
 	let language = window.languageData.data;
 
 	let component = (
-		<>
+		<Transitions className="transition">
 			<Navigation highlight='about' />
 			<CardAbout data={about} />
 			<CardEducation data={education} info={educationInfo} />
 			<CardLanguage data={language} />
-		</>
+		</Transitions>
 	);
 	return component;
 

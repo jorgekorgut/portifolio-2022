@@ -1,0 +1,283 @@
+#root{
+    --animation-time_1:2.5s;
+    --animation-time_2: 3s;
+    --animation-time_3: 2s;
+} 
+
+@keyframes apearing_height_1 {
+    0% {
+        height: 0%
+    }
+
+    20% {
+        height: 100%
+    }
+}
+
+@keyframes apearing_width_2_reverse {
+    0% {
+        left:100%;
+        width: 0%
+    }
+
+    19% {
+        left:100%;
+        width: 0%
+    }
+
+    40% {
+        left:0%;
+        width: 100%
+    }
+}
+
+@keyframes apearing_width_2 {
+    0% {
+        width: 0%
+    }
+
+    19% {
+        width: 0%
+    }
+
+    40% {
+        width: 100%
+    }
+}
+
+@keyframes apearing_height_3 {
+    0% {
+        height: 0%;
+    }
+
+    20% {
+        height: 0%;
+    }
+
+    39% {
+        height: 0%;
+    }
+
+    60% {
+        height: 100%;
+    }
+    
+    80% {
+        border-radius: 0;
+    }
+}
+
+@keyframes apearing_width_4 {
+    0% {
+        width: 0%;
+    }
+
+    20% {
+        width: 0%;
+    }
+
+    40% {
+        width: 0%;
+    }
+
+    59% {
+        width: 0%;
+    }
+
+    80% {
+        width: 100%;
+        border-radius: 0;
+    }
+
+}
+
+@keyframes apearing_width_4_reverse {
+    0% {
+        left:100%;
+        width: 0%;
+    }
+
+    20% {
+        left:100%;
+        width: 0%;
+    }
+
+    40% {
+        left:100%;
+        width: 0%;
+    }
+
+    59% {
+        left:100%;
+        width: 0%;
+    }
+
+    80% {
+        left:0;
+        width: 100%;
+    }
+
+}
+
+.experience_line_1 {
+    animation-name: apearing_height_1;
+    animation-duration: var(--animation-time_1);
+    animation-timing-function: ease-in;
+}
+
+.experience_line_2 {
+    animation-name: apearing_width_2_reverse;
+    animation-duration: var(--animation-time_1);
+    animation-timing-function:  linear;
+    
+}
+
+.experience_line_3{
+    animation-name: apearing_height_3;
+    animation-duration: var(--animation-time_1);
+    animation-timing-function:  linear;
+}
+
+.experience_line_4{
+    animation-name: apearing_width_4;
+    animation-duration: var(--animation-time_1);
+    animation-timing-function: ease-in;
+}
+
+@keyframes apearing_scale_4 {
+    0% {
+        scale: 0;
+    }
+
+    20% {
+        scale: 0;
+    }
+
+    40% {
+        scale: 0;
+    }
+
+    60% {
+        scale: 0;
+    }
+
+    79% {
+        scale: 0;
+    }
+
+    100%{
+        scale:1;
+    }
+}
+
+.window_experience{
+    animation-name: apearing_scale_4;
+    animation-duration: var(--animation-time_1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes apearing_scale_3 {
+    0% {
+        scale: 0;
+    }
+
+    20% {
+        scale: 0;
+    }
+
+    39% {
+        scale: 0;
+    }
+
+    60% {
+        scale: 1;
+    }
+
+    100%{
+        scale: 1;
+    }
+}
+
+
+@keyframes apearing_height_1_slow {
+    0% {
+        height: 0%
+    }
+
+    40% {
+        height: 100%
+    }
+}
+
+.about_line_1{
+    animation-name: apearing_height_1_slow;
+    animation-duration: var(--animation-time_1);
+    animation-timing-function: ease-in-out;
+}
+
+.window_about{
+    animation-name: apearing_scale_3;
+    animation-duration: var(--animation-time_1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+
+.projects_line_1 {
+    animation-name: apearing_height_1;
+    animation-duration: var(--animation-time_2);
+    animation-timing-function: ease-in;
+}
+
+.projects_line_2 {
+    animation-name: apearing_width_2_reverse;
+    animation-duration: var(--animation-time_2);
+    animation-timing-function:  linear;
+}
+
+.projects_line_3{
+    animation-name: apearing_height_3;
+    animation-duration: var(--animation-time_2);
+    animation-timing-function:  linear;
+}
+
+.projects_line_4{
+    animation-name: apearing_width_4_reverse;
+    animation-duration: var(--animation-time_2);
+    animation-timing-function: ease-in;
+}
+
+.window_projects{
+    animation-name: apearing_scale_4;
+    animation-duration: var(--animation-time_2);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.contact_line_1 {
+    animation-name: apearing_height_1;
+    animation-duration: var(--animation-time_3);
+    animation-timing-function: ease-in;
+}
+
+.contact_line_2 {
+    animation-name: apearing_width_2;
+    animation-duration: var(--animation-time_3);
+    animation-timing-function:  linear;
+}
+
+.contact_line_3{
+    animation-name: apearing_height_3;
+    animation-duration: var(--animation-time_3);
+    animation-timing-function:  linear;
+}
+
+.contact_line_4{
+    animation-name: apearing_width_4_reverse;
+    animation-duration: var(--animation-time_3);
+    animation-timing-function: ease-in;
+}
+
+.window_contact_me{
+    animation-name: apearing_scale_4;
+    animation-duration: var(--animation-time_3);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
