@@ -9,6 +9,9 @@
         --min-width-window: 350px;
         --height-about: 100px;
         --height-contact: 80px;
+
+        --projects-tags-width:200px;
+        --projects-tags-height:110px;
     }
 }
 
@@ -21,8 +24,13 @@
         --image-size: 80px;
         --min-width-nav: 220px;
         --min-width-window: 280px;
+
         --height-about: 100px;
+
         --height-contact: 80px;
+
+        --projects-tags-width:200px;
+        --projects-tags-height:110px;
     }
 }
 
@@ -35,8 +43,13 @@
         --image-size: 60px;
         --min-width-nav: 165px;
         --min-width-window: 280px;
+
         --height-about: 100px;
+
         --height-contact: 80px;
+
+        --projects-tags-width:200px;
+        --projects-tags-height:110px;
     }
 }
 
@@ -49,7 +62,12 @@
         --image-size: 80px;
         --min-width-nav: 220px;
         --min-width-window: 210px;
+
         --height-about: 100px;
+
         --height-contact: 80px;
+
+        --projects-tags-width:200px;
+        --projects-tags-height:110px;
     }
 }

@@ -111,7 +111,6 @@
 .card_element_url a:hover{
     color: var(--contact_color);
     text-decoration: underline;
-    font-weight: bold;
 }
 
 

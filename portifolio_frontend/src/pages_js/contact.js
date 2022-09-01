@@ -22,8 +22,6 @@ export function Contact(props) {
 
 	let contact = window.contactData.data;
 
-	console.log(contact);
-
 	return (<>
 		<Navigation highlight='contact' />
 		<div className='contact_box'>
