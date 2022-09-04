@@ -39,11 +39,16 @@
       "type": "string"
     },
     "Url_Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "VisibleTags": {
+      "type": "text",
+      "required": true
     }
   }
 }

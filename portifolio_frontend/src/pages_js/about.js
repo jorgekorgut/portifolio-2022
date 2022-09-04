@@ -9,16 +9,17 @@ import Transitions from '../assets/js/transition.js';
 
 export function About(props) {
 
-	[window.educationInfoLoading, window.educationInfoError, window.educationInfoData] = useFetch("api/education-info");
-	[window.educationLoading, window.educationError, window.educationData] = useFetch("api/educations?populate=*&sort=Date%3Adesc");
-	[window.aboutLoading, window.aboutError, window.aboutData] = useFetch("api/abouts?populate=*&sort=Order%3Aasc");
-	[window.languageLoading, window.languageError, window.languageData] = useFetch("api/languages?populate=*&sort=Level%3Adesc");
+	[window.educationInfoLoading, window.educationInfoError, window.educationInfoData] = useFetch("api/education-info", window.educationInfoData);
+	[window.educationLoading, window.educationError, window.educationData] = useFetch("api/educations?populate=*&sort=Date%3Adesc", window.educationData);
+	[window.aboutLoading, window.aboutError, window.aboutData] = useFetch("api/abouts?populate=*&sort=Order%3Aasc", window.aboutData);
+	[window.languageLoading, window.languageError, window.languageData] = useFetch("api/languages?populate=*&sort=Level%3Adesc", window.languageData);
+	[window.gratificationLoading, window.gratificationError, window.gratificationData] = useFetch("api/gratifications?populate=*", window.gratificationData);
 
-	if (window.educationError || window.aboutError || window.educationInfoError || window.languageError) {
+	if (window.educationError || window.aboutError || window.educationInfoError || window.languageError || window.gratificationError) {
 		return <p>Error.</p>;
 	}
 
-	if (window.educationLoading || window.aboutLoading || window.educationInfoLoading || window.languageLoading) {
+	if (window.educationLoading || window.aboutLoading || window.educationInfoLoading || window.languageLoading || window.gratificationLoading) {
 		return <Loading></Loading>;
 	}
 
@@ -26,6 +27,7 @@ export function About(props) {
 	let educationInfo = window.educationInfoData.data;
 	let education = window.educationData.data;
 	let language = window.languageData.data;
+	let gratification = window.gratificationData.data;
 
 	let component = (
 		<Transitions className="transition">
@@ -33,10 +35,45 @@ export function About(props) {
 			<CardAbout data={about} />
 			<CardEducation data={education} info={educationInfo} />
 			<CardLanguage data={language} />
+			<CardGratification data={gratification} />
 		</Transitions>
 	);
 	return component;
 
+}
+
+function CardGratification(props) {
+	let data = props.data;
+	return <div className="card_holder card_holder_about">
+		{
+			data.map((d) => {
+				return (
+					<div className='card card_about' key={d.id}>
+						<div className='card_element card_element_about'>
+							<div className={"title title_about"}>
+								<strong>Gratification</strong>
+							</div>
+							<div className='name'>
+								<strong>{d.attributes.Title + " - " + d.attributes.Year}</strong>
+							</div>
+							<div className='description'>
+								{d.attributes.Description}
+							</div>
+						</div>
+						{
+							d.attributes.Image.data !== null &&
+							<div className='card_element card_element_about_fit'>
+								<div className='image_holder image_holder_about'>
+									<img src={baseURL + d.attributes.Image.data.attributes.url} />
+								</div>
+							</div>
+						}
+					</div>
+
+				);
+			})
+		}
+	</div>
 }
 
 function CardLanguage(props) {
@@ -63,7 +100,6 @@ function CardLanguage(props) {
 					}
 				</div>
 			</div>
-
 		</div>);
 
 	return component;

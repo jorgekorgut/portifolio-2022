@@ -3,6 +3,13 @@
 	background-color: var(--about_color_back);
 }
 
+.card_element_about_fit{ 
+	color: var(--about_color);
+	background-color: var(--about_color_back);
+	height:fit-content;
+}
+
+
 .card_element_about .underlined{
 	color: var(--about_color);
 }

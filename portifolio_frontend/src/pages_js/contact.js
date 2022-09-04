@@ -1,17 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import { Navigation } from '../index.js';
 
 import '../pages_css/contact.css'
 import '../assets/css/components.css'
+import '../assets/css/animation_slider.css'
 import { baseURL, useFetch } from '../assets/js/communication.js';
 import { Loading } from './loading.js';
 import Transitions from '../assets/js/transition.js';
 
 export function Contact(props) {
 
-	[window.contactLoading, window.contactError, window.contactData] = useFetch("api/contacts?populate=*");
-	[window.contactInfoLoading, window.contactInfoError, window.contactInfoData] = useFetch("api/contact-info");
+	const [isFormActive, setIsFormActive] = useState(false);
+	const formRef = useRef(null);
+
+	[window.contactLoading, window.contactError, window.contactData] = useFetch("api/contacts?populate=*", window.contactData);
+	[window.contactInfoLoading, window.contactInfoError, window.contactInfoData] = useFetch("api/contact-info", window.contactInfoData);
 
 
 	if (window.contactError || window.contactInfoError) {
@@ -24,36 +28,76 @@ export function Contact(props) {
 
 	let contact = window.contactData.data;
 
+	function onSendMessageWriteClicked(){
+		
+		setIsFormActive(true);
+	};
+
+	function onSendMessageSendClicked(){
+		
+		let contactForm = document.getElementById("contact_form");
+		let name = contactForm[0].value;
+		let email = contactForm[1].value;
+		let subject = contactForm[2].value;
+		let text = contactForm[3].value;
+
+		let emailPattern =   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+		if(!email.match(emailPattern)){
+			alert("Your email adress is not valid.");
+			return;
+		}
+
+		console.log();
+		setIsFormActive(false);
+	};
+
 	return (<Transitions className="transition">
 		<Navigation highlight='contact' />
 		<div className='contact_box'>
 			<h1>Contact</h1>
-			<button>Send a message!</button>
+			{
+				isFormActive&&
+				<form id='contact_form' ref={formRef} onSubmit={onSendMessageSendClicked}>
+					<label>
+						Name
+						<input type="text"></input>
+					</label>
+					<label>
+						Email
+						<input type="text"></input>
+					</label>
+					<label>
+						Subject
+						<input type="text"></input>
+					</label>
+					<label>
+						Message
+						<textarea type="text"></textarea>
+					</label>	
+				</form>
+			}
+			<button onClick={!isFormActive?onSendMessageWriteClicked:onSendMessageSendClicked}>{!isFormActive?"Write me a message !":"Send !"}</button>
 		</div>
 		<div className='card_holder'>
 			{
 				contact.map((data) => {
 					return (
-						<div className='card card_contact' key={data.id}>
-							<div className='card_element card_element_contact card_element_contact_name'>
+						<a className='card card_contact' key={data.id} href={((data.attributes.isUrl)?"https://www.":"mailto:") + data.attributes.Url} target="_blank">
+
+							<div className='card_element card_element_contact card_element_contact_name' >
 								<strong>{data.attributes.Name}</strong>
 							</div>
 							<div className='card_element card_element_contact card_element_url'>
-								{
-									data.attributes.isUrl &&
-									<a href={"https://www."+data.attributes.Url} target="_blank">{data.attributes.Url}</a>
-								}
-								{
-									data.attributes.isEmail &&
-									data.attributes.Url
-								}	
+								<div>{data.attributes.Url}</div>
 							</div>
 							<div className='card_element card_element_contact card_element_contact_logo'>
+
 								<div className='image_holder image_holder_contact'>
 									<img src={baseURL + data.attributes.Image.data.attributes.url} />
 								</div>
 							</div>
-						</div>
+						</a>
 					);
 				})
 			}

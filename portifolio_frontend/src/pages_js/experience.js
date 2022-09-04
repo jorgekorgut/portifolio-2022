@@ -25,7 +25,7 @@ function findEveryYear(map){
 
 export function Experience(props){
 
-	[window.experienceLoading, window.experienceError, window.experienceData] = useFetch("api/experiences?populate=*&sort=Year%3Adesc");
+	[window.experienceLoading, window.experienceError, window.experienceData] = useFetch("api/experiences?populate=*&sort=Year%3Adesc", window.experienceData);
 	
 	if (window.experienceError) {
 		return <p>Error.</p>;

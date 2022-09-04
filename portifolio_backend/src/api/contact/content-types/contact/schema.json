@@ -35,6 +35,11 @@
       "type": "boolean",
       "default": false,
       "required": true
+    },
+    "ShowFirstPage": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }

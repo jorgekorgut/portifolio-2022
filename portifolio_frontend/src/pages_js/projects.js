@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import { Navigation } from '../index.js';
 
@@ -8,21 +8,15 @@ import { baseURL, useFetch } from '../assets/js/communication.js';
 import { Loading } from './loading.js';
 import Transitions from '../assets/js/transition.js';
 
-function ResearchBar() {
-	return (
-		<div className='research_container'>
-			<input type="text" className='research' placeholder="HTML, C#, FLUTTER, ...">
-			</input>
-			<button onClick={onResearch()} className="button_project">
-				Search
-			</button>
-		</div>
-	)
-}
 
 export function Projects(props) {
 
-	[window.projectLoading, window.projectError, window.projectData] = useFetch("api/projects?populate=*&sort=Order%3Aasc");
+	const [projectsFiltered, setProjectsFilter] = useState([]);
+	const [emptyResult, setEmptyResult] = useState(false);
+	let researchRef = useRef(null);
+	console.log(emptyResult);
+
+	[window.projectLoading, window.projectError, window.projectData] = useFetch("api/projects?populate=*&sort=Order%3Aasc", window.projectData);
 
 	if (window.projectError) {
 		return <p>Error.</p>;
@@ -33,13 +27,49 @@ export function Projects(props) {
 	}
 
 	let project = window.projectData.data;
+	
+	if(projectsFiltered.length === 0 && project !== []){
+		setProjectsFilter((projectState => project));
+	}
+
+	function onResearchClicked() {
+		setProjectsFilter((projectState) => {
+			let filterTarget = project.filter((value) => {
+				if(researchRef.current.value === ""){
+					return project;
+				}
+
+				return (value.attributes.Tags.toLowerCase().includes(researchRef.current.value.toLowerCase()) ||
+					(value.attributes.VisibleTags.toLowerCase().includes(researchRef.current.value.toLowerCase())) ||
+					(value.attributes.Name.toLowerCase().includes(researchRef.current.value.toLowerCase()))
+				);
+			});
+
+			if(filterTarget.length === 0){
+				setEmptyResult((emptyReact)=>true);
+			}else{
+				setEmptyResult((emptyReact)=>false);
+			}
+
+			return filterTarget;
+		});
+	}
+
+
 
 	return (<Transitions className="transition">
 		<Navigation highlight='projects' />
-		<ResearchBar />
+		<div className='research_container'>
+			<input type="text" className='research' placeholder="HTML, C#, FLUTTER, ..." ref={researchRef} onChange={onResearchClicked}>
+			</input>
+		</div>
+		{
+			emptyResult &&
+			<div className='empty_result_warning'> <strong>There are no projects that correspond to your search.</strong> <br/> <br/>Listing all projects...</div>
+		}
 		<div className='card_holder'>
 			{
-				project.map((data) => {
+				projectsFiltered.map((data) => {
 					return (<div className='card card_projects' key={data.id}>
 						<div className='card_element card_element_projects card_element_projects_tags'>
 							<div dangerouslySetInnerHTML={{ __html: data.attributes.Tags.replaceAll(',', "<br/>") }} />
