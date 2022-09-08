@@ -153,11 +153,11 @@ function Experience_Window(props) {
 			switch (innerText) {
 				case "ls":
 				case "l":
-					setTerminalLines(terminalLines => [...terminalLines, ""]);
+					setTerminalLines(terminalLines => [...terminalLines, "Comming soon."]);
 					break;
 				case "help":
 				case "h":
-					setTerminalLines(terminalLines => [...terminalLines, ""]);
+					setTerminalLines(terminalLines => [...terminalLines, "Comming soon."]);
 					break;
 				case "clear":
 					setTerminalLines(terminalLines => []);
@@ -257,7 +257,7 @@ function Contact_Window(props) {
 			<div className="information_contact">
 				{
 					contact.map((d) => {
-						return <a key={d.id} className='image_holder_index_contact' href={"https://www." + d.attributes.Url} target="_blank">
+						return <a key={d.id} className='image_holder_index_contact' href={((d.attributes.isEmail)?"mailto:":"https://www.") + d.attributes.Url} target="_blank">
 							<img src={baseURL + d.attributes.Image.data.attributes.url} />
 						</a>
 					})

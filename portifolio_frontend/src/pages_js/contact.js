@@ -47,8 +47,8 @@ export function Contact(props) {
 			alert("Your email adress is not valid.");
 			return;
 		}
-
-		console.log();
+		console.log(formRef);
+		formRef.current.submit();
 		setIsFormActive(false);
 	};
 
@@ -58,22 +58,22 @@ export function Contact(props) {
 			<h1>Contact</h1>
 			{
 				isFormActive&&
-				<form id='contact_form' ref={formRef} onSubmit={onSendMessageSendClicked}>
+				<form id='contact_form' ref={formRef} onSubmit={onSendMessageSendClicked} action={baseURL+"/api/email-contact"} method="post">
 					<label>
 						Name
-						<input type="text"></input>
+						<input id="name" name='name' type="text"></input>
 					</label>
 					<label>
 						Email
-						<input type="text"></input>
+						<input id="email" name="email" type="text"></input>
 					</label>
 					<label>
 						Subject
-						<input type="text"></input>
+						<input id='subject' name='subject' type="text"></input>
 					</label>
 					<label>
 						Message
-						<textarea type="text"></textarea>
+						<textarea id='message' name='message' type="text"></textarea>
 					</label>	
 				</form>
 			}

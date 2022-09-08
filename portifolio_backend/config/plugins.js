@@ -6,10 +6,12 @@ module.exports = ({ env }) => ({
           apiKey: env('SENDGRID_API_KEY'),
         },
         settings: {
-          defaultFrom: 'jorgekorgut@strapi.io',
-          defaultReplyTo: 'jorgekorgut@strapi.io',
-          testAddress: 'jorgekorgut@strapi.io',
+          //defaultFrom: 'em2256@korgut.fr',
+          //defaultReplyTo: 'em2256@korgut.fr',
+          defaultFrom: 'no-reply@korgut.fr',
+          efaultReplyTo: 'no-reply@korgut.fr',
+          testAddress: 'jorge.korgut-junior@insa-lyon.fr',
         },
       },
     },
-  });
+  }); 

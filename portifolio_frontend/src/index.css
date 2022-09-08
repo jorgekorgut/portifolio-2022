@@ -32,6 +32,11 @@
 
 	#window_cv{
 		--changed-size: 100%;
+		align-self: flex-start !important;
+	}
+
+	.container{
+		height: fit-content !important;
 	}
 }
 
@@ -203,6 +208,7 @@ a{
 	color: white;
 	font-size: var(--font-size_l);
 	min-width: var(--min-width-window);
+	align-self: center;
 }
 
 #window_contact input{
@@ -251,6 +257,8 @@ a{
 	border-radius: var(--border-radius);
 	color: var(--about_color);
 	transition: var(--button_transition);
+	align-self: end;
+	justify-self: center;
 }
 
 #window_cv:hover > svg{

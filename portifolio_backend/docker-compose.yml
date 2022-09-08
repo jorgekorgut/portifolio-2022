@@ -16,6 +16,7 @@ services:
       ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       NODE_ENV: ${NODE_ENV}
+      SENDGRID_API_KEY: ${SENDGRID_API_KEY}
     volumes:
       - ./config:/opt/app/config
       - ./src:/opt/app/src
