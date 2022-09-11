@@ -7,9 +7,9 @@ WORKDIR /opt/
 COPY ./package.json ./
 COPY ./database/data.db ./database
 ENV PATH /opt/node_modules/.bin:$PATH
-#RUN npm install
+RUN npm install
 WORKDIR /opt/app
 COPY ./ .
 RUN npm run build
-EXPOSE 1337
+EXPOSE 1338
 CMD ["npm", "run", "develop"]

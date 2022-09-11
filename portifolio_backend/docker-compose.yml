@@ -24,7 +24,7 @@ services:
       - ./yarn.lock:/opt/package-lock.json # Replace with package-lock.json if using npm
       - ./.env:/opt/app/.env
     ports:
-      - "1337:1337"
+      - "1338:1338"
     networks:
       - strapi
     depends_on:
@@ -44,7 +44,7 @@ services:
       - strapi-data:/var/lib/postgresql/data/ #using a volume
       #- ./data:/var/lib/postgresql/data/ # if you want to use a bind folder
     ports:
-      - "5432:5432"
+      - "5433:5433"
     networks:
       - strapi
 
