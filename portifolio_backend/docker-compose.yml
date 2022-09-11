@@ -1,7 +1,7 @@
 version: "3"
 services:
   strapi:
-    container_name: backend
+    container_name: backend_portifolio
     build: .
     image: mystrapi:latest
     restart: unless-stopped
@@ -32,7 +32,7 @@ services:
 
   strapiDB:
     image: postgres:12.0-alpine
-    container_name: strapi
+    container_name: strapi_portifolio
     platform: linux/amd64 #for platform error on Apple M1 chips
     restart: unless-stopped
     env_file: .env
