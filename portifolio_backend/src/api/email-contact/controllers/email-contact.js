@@ -19,8 +19,10 @@ module.exports = {
         text:"[Message from: "+msg.name+"]\n[Email for contact: "+msg.email+"]\n"+msg.text,
       });
       console.log("Email Sent!");
+      return 200;
     } catch(error){
       console.log(error); 
+      return 500;
     }
   },
 };

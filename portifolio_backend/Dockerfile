@@ -5,11 +5,12 @@ ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 WORKDIR /opt/
 COPY ./package.json ./
-COPY ./database/data.db ./database
 ENV PATH /opt/node_modules/.bin:$PATH
 RUN npm install
 WORKDIR /opt/app
 COPY ./ .
+COPY ./database/data.db /opt/app/database/data.db
+COPY ./postgres-data /var/lib/postgresql/data/
 RUN npm run build
 EXPOSE 1338
 CMD ["npm", "run", "develop"]
