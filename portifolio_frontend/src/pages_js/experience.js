@@ -2,7 +2,7 @@ import { useState , useEffect } from 'react';
 
 import {Navigation} from '../index.js';
 
-import {GetData, useFetch} from '../assets/js/communication.js'
+import {baseURL, GetData, useFetch} from '../assets/js/communication.js'
 
 import '../pages_css/experience.css'
 import '../assets/css/components.css'
@@ -67,7 +67,7 @@ export function Experience(props){
 									exp.attributes.Images.data !=null &&
 									exp.attributes.Images.data.map((image)=>(
 										<div key={image.id} className="card_element card_element_experience images">
-											<img src={"http://localhost:1337"+image.attributes.url}></img>
+											<img src={baseURL+image.attributes.url}></img>
 										</div>
 										)) 
 								}
