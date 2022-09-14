@@ -8,7 +8,7 @@ module.exports = {
       email: ctx.request.body.email,
       name:ctx.request.body.name,
       subject: ctx.request.body.subject,
-      text: ctx.request.body.message,
+      text: ctx.request.body.text,
     }
     
     try{
@@ -21,7 +21,7 @@ module.exports = {
       console.log("Email Sent!");
       return 200;
     } catch(error){
-      console.log(error); 
+      console.log(error);
       return 500;
     }
   },

@@ -10,7 +10,6 @@ RUN npm install
 WORKDIR /opt/app
 COPY ./ .
 COPY ./database/data.db /opt/app/database/data.db
-COPY ./postgres-data /var/lib/postgresql/data/
 RUN npm run build
 EXPOSE 1338
 CMD ["npm", "run", "develop"]
