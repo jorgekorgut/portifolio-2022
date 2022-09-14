@@ -47,7 +47,7 @@ function Portifolio(props) {
 	[window.cvLoading, window.cvError, window.cvData] = useFetch("api/cvs?populate=*&sort=Date%3Adesc", window.cvData);
 	[window.projectLoading, window.projectError, window.projectData] = useFetch("api/projects?populate=*&sort=Order%3Aasc", window.projectData);
 	[window.contactLoading, window.contactError, window.contactData] = useFetch("api/contacts?populate=*", window.contactData);
-
+					
 	if (window.cvError || window.projectError || window.contactError) {
 		return <p>Error.</p>;
 	}

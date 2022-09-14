@@ -14,7 +14,6 @@ export function Projects(props) {
 	const [projectsFiltered, setProjectsFilter] = useState([]);
 	const [emptyResult, setEmptyResult] = useState(false);
 	let researchRef = useRef(null);
-	console.log(emptyResult);
 
 	[window.projectLoading, window.projectError, window.projectData] = useFetch("api/projects?populate=*&sort=Order%3Aasc", window.projectData);
 

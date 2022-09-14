@@ -3,6 +3,7 @@ import { useState , useEffect } from 'react';
 const parseJSON = (resp) => (resp.json ? resp.json() : resp);
 
 export const baseURL = "https://portifolio.korgut.fr";
+//export const baseURL = "http://localhost:1338";
 
 const checkStatus = (resp) => {
   if (resp.status >= 200 && resp.status < 300) {
@@ -18,7 +19,6 @@ export const useFetch = (url,globalData) => {
 	const [data, 	setData] = useState(null);
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(true);
-
 	useEffect(()=>{
 		const fetchData = async () => {
 			setLoading(true);
